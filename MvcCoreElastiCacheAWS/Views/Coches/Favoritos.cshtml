@@ -1,0 +1,28 @@
+﻿@model List<Coche>
+
+<h1 style="color:blue">
+    ElastiCache AWS Coches FAVORITOS
+</h1>
+
+@if (Model != null)
+{
+    @foreach (Coche car in Model)
+    {
+        <div class="card" style="width: 18rem;background-color:greenyellow">
+            <img src="@car.Imagen" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@car.Marca @car.Modelo</h5>
+                <a asp-controller="Coches" asp-action="Details"
+           asp-route-id="@car.IdCoche"
+                   class="btn btn-primary">Details</a>
+                <a asp-controller="Coches" asp-action="EliminarFavorito"
+           asp-route-idcoche="@car.IdCoche"
+                   class="btn btn-danger">Eliminar Favorito</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <h2 style="color:red">No hay coches Favoritos</h2>
+}
